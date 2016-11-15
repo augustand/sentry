@@ -26,3 +26,6 @@ class UserSerializerTest(TestCase):
         result = serialize(user)
         assert result['id'] == six.text_type(user.id)
         assert result['has2fa'] is True
+        assert len(result['emails']) == 1
+        assert result['emails'][0]['email'] == user.email
+        assert result['emails'][0]['is_verified'] is False
